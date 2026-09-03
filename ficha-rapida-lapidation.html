@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ficha Rápida Lapidation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground: #F1F2F4;
+    --surface: #FFFFFF;
+    --surface-2: #E9EAEE;
+    --ink: #14161B;
+    --ink-2: #3A4049;
+    --muted: #5B6270;
+    --rule: #D3D6DC;
+    --rule-soft: #E4E6EA;
+    --accent: #8A6A2C;
+    --accent-ink: #6E5322;
+    --accent-wash: #F0E7D4;
+    --alert: #A8412A;
+    --alert-wash: #F7E7E2;
+    --ok: #2F6650;
+    --ok-wash: #DFEBE5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0F1115;
+      --surface: #171A20;
+      --surface-2: #1F232B;
+      --ink: #E7E9ED;
+      --ink-2: #C2C7D0;
+      --muted: #99A0AD;
+      --rule: #2C313B;
+      --rule-soft: #242932;
+      --accent: #C7A25A;
+      --accent-ink: #D9B978;
+      --accent-wash: #2A2419;
+      --alert: #E0785C;
+      --alert-wash: #2E1D18;
+      --ok: #7FBFA0;
+      --ok-wash: #17241E;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0F1115;
+    --surface: #171A20;
+    --surface-2: #1F232B;
+    --ink: #E7E9ED;
+    --ink-2: #C2C7D0;
+    --muted: #99A0AD;
+    --rule: #2C313B;
+    --rule-soft: #242932;
+    --accent: #C7A25A;
+    --accent-ink: #D9B978;
+    --accent-wash: #2A2419;
+    --alert: #E0785C;
+    --alert-wash: #2E1D18;
+    --ok: #7FBFA0;
+    --ok-wash: #17241E;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── barra fixa ─────────────────────────────── */
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+  }
+  .topbar-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-right: auto;
+  }
+  .brand h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.28rem;
+    letter-spacing: -0.01em;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .brand .sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .search-wrap { position: relative; display: flex; align-items: center; }
+  #q {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.82rem;
+    width: 280px;
+    max-width: 46vw;
+    padding: 8px 34px 8px 12px;
+    border: 1px solid var(--rule);
+    background: var(--ground);
+    color: var(--ink);
+    border-radius: 0;
+  }
+  #q::placeholder { color: var(--muted); }
+  #q:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent); }
+  .slash {
+    position: absolute;
+    right: 9px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    border: 1px solid var(--rule);
+    padding: 0 5px;
+    pointer-events: none;
+  }
+  #q:not(:placeholder-shown) + .slash { display: none; }
+
+  .count {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    white-space: nowrap;
+    min-width: 8ch;
+  }
+
+  button.ghost {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    padding: 7px 12px;
+    border: 1px solid var(--rule);
+    background: var(--surface);
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  button.ghost:hover { border-color: var(--accent); color: var(--ink); }
+  button.ghost:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ── faixa de alerta ────────────────────────── */
+
+  .alertbar {
+    background: var(--alert-wash);
+    border-bottom: 1px solid var(--rule);
+    color: var(--alert);
+  }
+  .alertbar div {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 9px 24px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+  }
+  .alertbar b { font-weight: 500; }
+
+  /* ── grade ──────────────────────────────────── */
+
+  .wrap {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 24px 24px 80px;
+  }
+
+  /* fluxo masonry: os cards empacotam sem deixar buraco no fim da coluna */
+  .grid {
+    columns: 340px 4;
+    column-gap: 16px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--accent);
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 0 0 16px;
+  }
+  .card[hidden] { display: none; }
+
+  .card > h2 {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+    padding: 12px 16px 10px;
+    border-bottom: 1px solid var(--rule-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .card > h2 .tag {
+    font-size: 0.64rem;
+    letter-spacing: 0.06em;
+    padding: 2px 6px;
+    border: 1px solid var(--accent);
+    color: var(--accent-ink);
+    background: var(--accent-wash);
+    text-transform: none;
+  }
+  .card > h2 .tag.hot { border-color: var(--alert); color: var(--alert); background: var(--alert-wash); }
+
+  .rows { display: flex; flex-direction: column; }
+
+  .row {
+    display: grid;
+    grid-template-columns: minmax(96px, 34%) 1fr;
+    gap: 12px;
+    padding: 9px 16px;
+    border-bottom: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .row:last-child { border-bottom: none; }
+  .row[hidden] { display: none; }
+  .row .k {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+  .row .v { color: var(--ink); min-width: 0; overflow-wrap: anywhere; }
+  .row .v small { display: block; color: var(--muted); font-size: 0.8rem; line-height: 1.4; margin-top: 2px; }
+  .row.stack { grid-template-columns: 1fr; gap: 3px; }
+  .row.big .v {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  b, strong { font-weight: 600; }
+  .num { font-variant-numeric: tabular-nums; }
+
+  .flag {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--alert);
+    border: 1px solid var(--alert);
+    background: var(--alert-wash);
+    padding: 0 5px;
+    margin-left: 5px;
+    white-space: nowrap;
+    vertical-align: 1px;
+  }
+  .ok-flag {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ok);
+    border: 1px solid var(--ok);
+    background: var(--ok-wash);
+    padding: 0 5px;
+    margin-left: 5px;
+    white-space: nowrap;
+    vertical-align: 1px;
+  }
+
+  /* listas numeradas de fluxo */
+  ol.flow, ul.bare {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+  /* bloco, nao grid: senao <b> e <i> viram celulas e quebram palavra a palavra */
+  ol.flow li, ul.bare li {
+    display: block;
+    position: relative;
+    padding: 8px 16px 8px 42px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  ol.flow li::before, ul.bare li::before {
+    position: absolute;
+    left: 16px;
+    top: 9px;
+    line-height: 1.5;
+  }
+  ol.flow li:last-child, ul.bare li:last-child { border-bottom: none; }
+  ol.flow li[hidden], ul.bare li[hidden] { display: none; }
+  ol.flow li::before {
+    content: counter(step, decimal-leading-zero);
+    counter-increment: step;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+  }
+  ul.bare li::before {
+    content: "—";
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    color: var(--rule);
+  }
+
+  /* barra de verba */
+  .bar { display: flex; height: 34px; margin: 12px 16px 4px; border: 1px solid var(--rule); }
+  .bar > div {
+    display: flex; align-items: center; padding: 0 10px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem; white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .bar .s1 { flex: 1200; background: var(--accent-wash); color: var(--accent-ink); border-right: 1px solid var(--rule); }
+  .bar .s2 { flex: 800; background: var(--surface-2); color: var(--ink-2); }
+  .bar-legend {
+    margin: 0 16px 12px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.68rem; color: var(--muted); letter-spacing: 0.04em;
+    display: flex; justify-content: space-between; gap: 10px;
+  }
+
+  .empty {
+    display: none;
+    padding: 40px 4px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .empty.on { display: block; }
+
+  footer {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 22px 24px 0;
+    border-top: 1px solid var(--rule);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  @media print {
+    .topbar, .alertbar { position: static; }
+    #q, .slash, .count, button.ghost { display: none; }
+    body { background: #fff; color: #000; font-size: 10.5pt; }
+    .card { break-inside: avoid; border-color: #bbb; }
+    .grid { columns: 2; column-gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <h1>Ficha Rápida Lapidation</h1>
+      <span class="sub">Consulta · atualizado 01 set 2026</span>
+    </div>
+    <div class="search-wrap">
+      <input id="q" type="search" placeholder="Buscar: protocolo, verba, Fer, portfólio…" autocomplete="off" aria-label="Buscar na ficha">
+      <span class="slash">/</span>
+    </div>
+    <span class="count" id="count"></span>
+    <button class="ghost" type="button" id="theme">Tema</button>
+  </div>
+</div>
+
+<div class="alertbar">
+  <div>
+    <span><b>Status:</b> contrato aceito, aguardando OK final do Ramon</span>
+    <span><b>Trava nº 1:</b> acesso completo ao portfólio do Meta</span>
+    <span><b>Trava nº 2:</b> preços dos protocolos</span>
+    <span><b>Prazo:</b> avaliação gratuita até 30/09/2026</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="grid" id="grid">
+
+    <!-- EMPRESA -->
+    <section class="card">
+      <h2>Empresa</h2>
+      <div class="rows">
+        <div class="row"><span class="k">Nome</span><span class="v">Lapidation Clinic</span></div>
+        <div class="row"><span class="k">Posicionamento</span><span class="v">Premium</span></div>
+        <div class="row"><span class="k">Conceito</span><span class="v">“Lapidação” — emagrecimento, definição, longevidade, saúde, qualidade de vida</span></div>
+        <div class="row"><span class="k">Atendimento</span><span class="v">100% online, sem presencial</span></div>
+        <div class="row"><span class="k">Entrega</span><span class="v">Nacional, todo o Brasil</span></div>
+        <div class="row"><span class="k">Maturidade</span><span class="v">Nunca fez lançamento formal<small>Vende conforme posta. Sem dados consolidados.</small></span></div>
+        <div class="row"><span class="k">Indicação</span><span class="v">Yasmin — amiga pessoal do Ramon, sem relação comercial</span></div>
+      </div>
+    </section>
+
+    <!-- PESSOAS -->
+    <section class="card">
+      <h2>Pessoas e papéis</h2>
+      <div class="rows">
+        <div class="row"><span class="k">Ramon</span><span class="v">Sócio e decisor final<small>Aprova verba. Faz a maior parte das artes. Fechou a influenciadora. Não estava na reunião.</small></span></div>
+        <div class="row"><span class="k">Lidiane Steink</span><span class="v">Interlocutora do projeto<small>Faz vídeos, fotos e algumas artes. Fez o site no Figma e a automação no BotConversa.</small></span></div>
+        <div class="row"><span class="k">Pedro</span><span class="v">Participou da reunião pela clínica</span></div>
+        <div class="row"><span class="k">Fer</span><span class="v">Único atendimento e vendas<small>Vende até a avaliação e retoma para o fechamento.</small></span></div>
+        <div class="row"><span class="k">Nutri</span><span class="v">Faz a avaliação, entre o atendimento e o fechamento</span></div>
+        <div class="row"><span class="k">Leandro</span><span class="v">Pode ter criado a página do Facebook<span class="flag">confirmar</span></span></div>
+        <div class="row"><span class="k">Outro gestor</span><span class="v">Já cuida de um dos perfis — conta de anúncio separada da minha</span></div>
+      </div>
+    </section>
+
+    <!-- NÚMEROS -->
+    <section class="card">
+      <h2>Números-chave <span class="tag">decorar</span></h2>
+      <div class="rows">
+        <div class="row big"><span class="k">Meta comercial</span><span class="v">10 planos / dia</span></div>
+        <div class="row big"><span class="k">Verba mídia</span><span class="v">R$ 2.000 / mês</span></div>
+        <div class="row big"><span class="k">Ticket suplemento</span><span class="v">~ R$ 250</span></div>
+        <div class="row"><span class="k">Ticket protocolo</span><span class="v">Não informado<span class="flag">bloqueia CPA</span></span></div>
+        <div class="row"><span class="k">Avaliação após 30/09</span><span class="v">R$ 200</span></div>
+        <div class="row"><span class="k">Mais vendido</span><span class="v">Não têm — base pequena demais</span></div>
+        <div class="row"><span class="k">Volume/mês</span><span class="v">Não têm — sem lançamento formal</span></div>
+      </div>
+    </section>
+
+    <!-- PERFIS -->
+    <section class="card">
+      <h2>Perfis Instagram</h2>
+      <div class="rows">
+        <div class="row"><span class="k">Wellness</span><span class="v">~43.000 seguidores · lifestyle<small>Herdado do Núcleo Casa, negócio antigo do Ramon. Seguidores orgânicos, não comprados. Estava parado — queda por baixa frequência de post, não pela troca de marca. Já tem gestor.</small></span></div>
+        <div class="row"><span class="k">Clinic</span><span class="v">~1.600 seguidores · formal e clínico<small>Perfil novo e oficial da clínica. Com bloqueio/restrição no Meta. Candidato à nova operação.</small></span></div>
+        <div class="row stack"><span class="k">Estratégia</span><span class="v">Um perfil concentra o tráfego, o outro é apoio. Campanhas de produto e influenciador rodam em <b>collab entre os dois</b> — o Instagram posiciona dois perfis, não três.</span></div>
+        <div class="row stack"><span class="k">Regra fechada</span><span class="v">Dois gestores <b>nunca</b> na mesma conta de anúncio. Contas separadas evitam conflito de verba e gestão.</span></div>
+        <div class="row"><span class="k">Em aberto</span><span class="v">Qual perfil fica comigo — Ramon decide<span class="flag">confirmar</span></span></div>
+      </div>
+    </section>
+
+    <!-- PROTOCOLOS -->
+    <section class="card">
+      <h2>Protocolos — o foco do tráfego <span class="tag hot">produto principal</span></h2>
+      <div class="rows">
+        <div class="row"><span class="k">Protocolo 1</span><span class="v">Operation Sculpt Intelligence<span class="flag">nome a confirmar</span></span></div>
+        <div class="row"><span class="k">Protocolo 2</span><span class="v">Method Human Sculpt<span class="flag">nome a confirmar</span></span></div>
+        <div class="row"><span class="k">Protocolo 3</span><span class="v">Wellness — o mais completo<small>Inclui a linha de suplementos inteira, ilimitada.</small><span class="flag">nome a confirmar</span></span></div>
+        <div class="row stack"><span class="k">O que incluem (varia por protocolo)</span><span class="v">Acompanhamento · nutricionista · acesso a eventos · acesso ao clube · aplicativo com treinos · os três produtos base AM/MD/PM</span></div>
+        <div class="row"><span class="k">Entrega AM/MD/PM</span><span class="v">Todo mês, durante todo o período — o cliente <b>não recompra</b></span></div>
+        <div class="row"><span class="k">Duração</span><span class="v">1 mês por ciclo → recompra mensal natural</span></div>
+        <div class="row"><span class="k">Preços</span><span class="v">Nenhum valor foi informado na reunião<span class="flag">pedir a Lidiane</span></span></div>
+      </div>
+    </section>
+
+    <!-- AM MD PM -->
+    <section class="card">
+      <h2>Produtos base AM / MD / PM</h2>
+      <div class="rows">
+        <div class="row"><span class="k">AM · manhã</span><span class="v">Foco e energia ao longo do dia</span></div>
+        <div class="row"><span class="k">MD · meio-dia</span><span class="v">Saciedade — tranquilidade, sem fome<small>Não é medicamento controlado.</small></span></div>
+        <div class="row"><span class="k">PM · noite</span><span class="v">Melatonina — sono e qualidade do sono</span></div>
+        <div class="row"><span class="k">Presença</span><span class="v">Acompanham os três protocolos, junto da cartinha e dos produtos iniciais</span></div>
+      </div>
+    </section>
+
+    <!-- SUPLEMENTOS -->
+    <section class="card">
+      <h2>Suplementos avulsos</h2>
+      <div class="rows">
+        <div class="row"><span class="k">Linha</span><span class="v">Formulações inteligentes</span></div>
+        <div class="row"><span class="k">Onde</span><span class="v">Vendidos avulsos no site, sem protocolo</span></div>
+        <div class="row"><span class="k">Ticket médio</span><span class="v">~ R$ 250 <small>Há itens mais caros e mais baratos.</small></span></div>
+        <div class="row"><span class="k">Papel</span><span class="v">Não é o principal — a venda avulsa é consequência<small>O foco comercial é o protocolo, de ticket maior.</small></span></div>
+      </div>
+    </section>
+
+    <!-- MAPA DA SAÚDE -->
+    <section class="card">
+      <h2>Mapa da Saúde <span class="tag hot">prazo 30/09</span></h2>
+      <div class="rows">
+        <div class="row"><span class="k">O que é</span><span class="v">Avaliação gratuita de triagem no site</span></div>
+        <div class="row"><span class="k">Para quem</span><span class="v">Quem <b>ainda não quer</b> comprar o protocolo</span></div>
+        <div class="row"><span class="k">Perguntas</span><span class="v">Saúde mental, desempenho e libido<span class="flag">escopo a confirmar</span></span></div>
+        <div class="row"><span class="k">No final</span><span class="v">Indica suplementos conforme o perfil</span></div>
+        <div class="row"><span class="k">Depois</span><span class="v">Manda para o WhatsApp — o comercial tenta reverter para o protocolo</span></div>
+        <div class="row"><span class="k">Gratuidade</span><span class="v">Até <b>30/09/2026</b>. Depois R$ 200<small>Alavanca de urgência real para os primeiros criativos.</small></span></div>
+      </div>
+    </section>
+
+    <!-- PÚBLICO -->
+    <section class="card">
+      <h2>Público e praças</h2>
+      <div class="rows">
+        <div class="row"><span class="k">Gênero</span><span class="v">Atende homens e mulheres</span></div>
+        <div class="row"><span class="k">Expectativa</span><span class="v">Mulheres <b>40+</b> como concentração inicial<small>O cliente admite que pode atingir público mais jovem. Vai “sentir” conforme os leads chegam.</small></span></div>
+        <div class="row"><span class="k">Persona</span><span class="v">Não existe consolidada<span class="flag">validar com dados</span></span></div>
+        <div class="row"><span class="k">Apelo</span><span class="v">Mistura estética e performance: emagrecimento, definição, longevidade, saúde, qualidade de vida</span></div>
+        <div class="row"><span class="k">Praça 1</span><span class="v">Sudeste — São Paulo e Rio de Janeiro</span></div>
+        <div class="row"><span class="k">Praça 2</span><span class="v">Goiânia</span></div>
+        <div class="row"><span class="k">Praça 3</span><span class="v">Sul — Santa Catarina</span></div>
+        <div class="row"><span class="k">Regra</span><span class="v">Foco nas capitais, por causa do frete e da verba curta</span></div>
+      </div>
+    </section>
+
+    <!-- FLUXO ATUAL -->
+    <section class="card">
+      <h2>Fluxo do lead hoje</h2>
+      <ol class="flow">
+        <li>Lead chega pelo site, Mapa da Saúde ou Instagram e cai no BotConversa</li>
+        <li>Introdução humanizada — <b>Ramon não quer atendimento robotizado</b></li>
+        <li>Bot apresenta a avaliação gratuita até 30/09 e avisa que depois custa R$ 200</li>
+        <li>Bot apresenta o <b>valor do protocolo</b> — a pessoa chega ao comercial ciente do preço</li>
+        <li>Cai para o comercial (Fer)</li>
+        <li>Fer atende e vende até a avaliação</li>
+        <li>Avaliação com a nutricionista</li>
+        <li>Volta para a Fer para o fechamento</li>
+      </ol>
+    </section>
+
+    <!-- FUNIL CRM -->
+    <section class="card">
+      <h2>Funil de CRM proposto</h2>
+      <ol class="flow">
+        <li>Novos leads — entrada de tudo</li>
+        <li>Em atendimento — já com a Fer</li>
+        <li>Qualificado — critério a definir; proposta: preencheu o formulário completo da LP<span class="flag">definir</span></li>
+        <li>Avaliação agendada — com a nutricionista</li>
+        <li>Avaliação realizada — compareceu de fato</li>
+        <li>Proposta do protocolo — voltou para a Fer</li>
+        <li>Ganho / Perdido</li>
+      </ol>
+    </section>
+
+    <!-- STACK -->
+    <section class="card">
+      <h2>Stack e acessos</h2>
+      <div class="rows">
+        <div class="row"><span class="k">Site</span><span class="v">Feito no Figma — limitado, não permite atrelar muita coisa</span></div>
+        <div class="row"><span class="k">CRM</span><span class="v">Kommo — login criado, <b>integração não feita</b><small>Lidiane vai estudar a base de códigos.</small></span></div>
+        <div class="row"><span class="k">Automação</span><span class="v">BotConversa — régua toda montada por Lidiane</span></div>
+        <div class="row"><span class="k">Atendimento</span><span class="v">WhatsApp e Instagram</span></div>
+        <div class="row"><span class="k">Google Ads</span><span class="v">Não existe — crio no meu MCC e repasso como proprietário</span></div>
+        <div class="row"><span class="k">Conta Meta</span><span class="v">Não existe para o perfil novo — criar</span></div>
+        <div class="row"><span class="k">Página Facebook</span><span class="v">Leandro talvez já tenha criado<span class="flag">confirmar</span></span></div>
+        <div class="row"><span class="k">Rastreamento</span><span class="v">Instalar GTM, pixel e códigos — <b>preciso de acesso ao site</b></span></div>
+        <div class="row"><span class="k">Verificação Google</span><span class="v">Vão pedir CNPJ ou CNH do responsável</span></div>
+      </div>
+    </section>
+
+    <!-- LP -->
+    <section class="card">
+      <h2>Landing page proposta</h2>
+      <div class="rows">
+        <div class="row stack"><span class="k">Ideia</span><span class="v">Página dedicada aos protocolos, separada do site institucional — que segue servindo quem quer suplemento avulso.</span></div>
+      </div>
+      <ul class="bare">
+        <li>Formulação — o que vem dentro de cada produto</li>
+        <li>Benefícios</li>
+        <li>Certificações <span class="flag">confirmar se existem</span></li>
+        <li>Prova social: depoimentos e conteúdo dos influenciadores</li>
+        <li>Formulário de captura integrado direto ao CRM</li>
+      </ul>
+      <div class="rows">
+        <div class="row stack"><span class="k">Por quê</span><span class="v">Sobe a conversão e alimenta o CRM com lead qualificado, em vez de jogar tudo no WhatsApp — que é o que hoje desorganiza o atendimento da Fer.</span></div>
+      </div>
+    </section>
+
+    <!-- RESTRIÇÕES -->
+    <section class="card">
+      <h2>Restrições no Meta <span class="tag hot">travando o start</span></h2>
+      <ul class="bare">
+        <li>O Instagram menor (<b>Lapidation Clinic</b>) está bloqueado ou restrito</li>
+        <li>O <b>portfólio do Meta</b> aparece bloqueado</li>
+        <li>Não foi possível vincular o <b>BotConversa</b> ao perfil Clinic — dá erro</li>
+        <li>Tentaram vincular a página do Facebook pela conta pessoal da Lidiane <i>e</i> pela do Ramon — não funcionou em nenhuma; depois apareceu o aviso de restrição</li>
+        <li>O portfólio <b>existe</b> e é acessível pelo próprio Instagram, mas não está atrelado a ninguém</li>
+        <li>Estão operando pelo Wellness enquanto isso</li>
+        <li><b>Há crédito parado na conta bloqueada</b></li>
+      </ul>
+      <div class="rows">
+        <div class="row stack"><span class="k">Minha leitura</span><span class="v">Provavelmente não é a conta de anúncio bloqueada, e sim uma <b>página com restrição</b>. Se for isso, dá para usar a verba conectando outra página. Só confirmo com o acesso em mãos.</span></div>
+        <div class="row stack"><span class="k">Plano B acordado</span><span class="v">Se a restrição não for revertida, criar conta nova. Suporte de Meta e Google está ruim — reversão é incerta.</span></div>
+        <div class="row stack"><span class="k">Risco do nicho</span><span class="v">Emagrecimento é sensível: as plataformas restringem conforme a linguagem do anúncio.</span></div>
+      </div>
+    </section>
+
+    <!-- PAGAMENTO -->
+    <section class="card">
+      <h2>Pagamento e risco</h2>
+      <div class="rows">
+        <div class="row"><span class="k">Hoje</span><span class="v">Pix</span></div>
+        <div class="row"><span class="k">Risco</span><span class="v">Com Pix, conta bloqueada = crédito preso<small>Devolução leva de 30 a 60 dias.</small></span></div>
+        <div class="row"><span class="k">Recomendação</span><span class="v"><b>Cartão corporativo</b> — debita conforme a campanha gasta, sem crédito parado</span></div>
+        <div class="row"><span class="k">Encaminhamento</span><span class="v">Lidiane já usava cartão antes e vai tratar com o Ramon<span class="flag">pendente</span></span></div>
+        <div class="row"><span class="k">Histórico</span><span class="v">Sem bloqueio nem restrição com o outro gestor até hoje</span></div>
+      </div>
+    </section>
+
+    <!-- VERBA -->
+    <section class="card">
+      <h2>Verba e acompanhamento</h2>
+      <div class="bar" role="img" aria-label="Divisão da verba mensal: R$ 1.200 no Meta e R$ 800 no Google, total R$ 2.000">
+        <div class="s1">Meta · R$ 1.200</div>
+        <div class="s2">Google · R$ 800</div>
+      </div>
+      <div class="bar-legend"><span>60% Meta (+ impostos)</span><span>Total R$ 2.000/mês</span><span>40% Google</span></div>
+      <div class="rows">
+        <div class="row"><span class="k">Estratégia</span><span class="v">Começar baixo, validar nos testes regionais, escalar depois</span></div>
+        <div class="row"><span class="k">Status</span><span class="v">Aguardando aprovação final do Ramon<span class="flag">pendente</span></span></div>
+        <div class="row"><span class="k">No start</span><span class="v">Grupo no Axe<span class="flag">nome a confirmar</span><small>Atualização das campanhas e feedback constante do comercial sobre qualidade de lead.</small></span></div>
+        <div class="row"><span class="k">30 a 45 dias</span><span class="v">Dashboard automático</span></div>
+        <div class="row"><span class="k">Quinzenal/mensal</span><span class="v">Relatório: performance, qualidade de lead e próximas ações</span></div>
+      </div>
+    </section>
+
+    <!-- CRIATIVOS -->
+    <section class="card">
+      <h2>Criativos e influenciadores</h2>
+      <div class="rows">
+        <div class="row"><span class="k">Vídeos e fotos</span><span class="v">Lidiane — produção interna</span></div>
+        <div class="row"><span class="k">Artes</span><span class="v">Ramon concentra hoje; Lidiane também faz algumas</span></div>
+        <div class="row"><span class="k">Direito de uso</span><span class="v">Conteúdo do Instagram <b>pode ser usado em campanha</b><small>Inclui o material com as modelos que aparecem no perfil — cliente confirmou.</small><span class="ok-flag">liberado</span></span></div>
+        <div class="row"><span class="k">Prova social</span><span class="v">Ainda sendo colhida — operação nova</span></div>
+        <div class="row"><span class="k">Influenciadora</span><span class="v">Daniela — fechada pelo Ramon, por enquanto a única</span></div>
+        <div class="row"><span class="k">Modelos</span><span class="v">Duas aparecem no perfil; devem seguir com uma só<small>“A Loira” está em dúvida. Lidiane confirma e me passa.</small><span class="flag">confirmar</span></span></div>
+      </div>
+    </section>
+
+    <!-- COMPLIANCE -->
+    <section class="card">
+      <h2>Compliance de anúncio <span class="tag hot">antes de subir criativo</span></h2>
+      <div class="rows">
+        <div class="row stack"><span class="k">O que existe</span><span class="v">O cliente <b>tem um documento</b> com os termos e linguagens que não podem ser usados nos anúncios. Lidiane ficou de enviar.</span></div>
+        <div class="row stack"><span class="k">Por que importa</span><span class="v">Num nicho que já bloqueou uma conta deles, esse documento é o que separa a operação de outro bloqueio. <b>Precisa chegar antes de qualquer criativo ir ao ar.</b></span></div>
+      </div>
+    </section>
+
+    <!-- PENDÊNCIAS CLIENTE -->
+    <section class="card">
+      <h2>Pendências — com o cliente</h2>
+      <ul class="bare">
+        <li><b>Ramon definir qual perfil fica comigo</b></li>
+        <li><b>Aprovação final da verba de R$ 2.000</b></li>
+        <li><b>Acesso completo ao portfólio do Meta</b> (não parcial)</li>
+        <li><b>Documento de termos proibidos nos anúncios</b></li>
+        <li><b>Detalhamento dos protocolos, com preços</b></li>
+        <li>Confirmar se Leandro criou a página do Facebook</li>
+        <li>Estudar a integração do site com o CRM</li>
+        <li>Falar com Ramon sobre o cartão corporativo</li>
+        <li>Documentos de verificação de anunciante quando o Google pedir</li>
+        <li>Liberar acesso ao site para os rastreamentos</li>
+      </ul>
+    </section>
+
+    <!-- PENDÊNCIAS MINHAS -->
+    <section class="card">
+      <h2>Pendências — comigo</h2>
+      <ul class="bare">
+        <li>Verificar configurações do perfil Clinic e identificar a restrição</li>
+        <li>Avaliar com suporte de Meta e Google a reversão</li>
+        <li>Criar conta de anúncios nova se não reverter</li>
+        <li>Estruturar a operação do novo perfil em conta separada</li>
+        <li>Alinhar campanhas em colaboração com o outro gestor</li>
+        <li>Estruturar a landing page dos protocolos</li>
+        <li>Confirmar quais influenciadores permanecem</li>
+        <li>Desenhar o fluxo do CRM</li>
+        <li>Investigar o portfólio e vincular Instagram e Facebook</li>
+        <li>Criar o Google Ads via MCC e repassar como proprietário</li>
+        <li>Instalar GTM, pixel e rastreamento</li>
+        <li>Criar o grupo no Axe após a aprovação</li>
+        <li>Entregar o dashboard automático em 30 a 45 dias</li>
+      </ul>
+    </section>
+
+    <!-- LACUNAS -->
+    <section class="card">
+      <h2>O que ainda não sabemos</h2>
+      <div class="rows">
+        <div class="row"><span class="k">Preço dos protocolos</span><span class="v">Trava ticket, CPA-alvo e ROAS → detalhamento que Lidiane vai enviar</span></div>
+        <div class="row"><span class="k">Nomes dos protocolos</span><span class="v">Trava copy e LP → confirmar por escrito</span></div>
+        <div class="row"><span class="k">Termos proibidos</span><span class="v">Risco de bloqueio → documento que o cliente já tem</span></div>
+        <div class="row"><span class="k">Histórico de vendas</span><span class="v">Sem baseline de CPL/CPA → construir nos primeiros 30 a 45 dias</span></div>
+        <div class="row"><span class="k">Persona</span><span class="v">Segmentação no palpite de mulher 40+ → validar com as primeiras campanhas</span></div>
+        <div class="row"><span class="k">Certificações</span><span class="v">Forte para converter numa LP premium → perguntar ao cliente</span></div>
+        <div class="row"><span class="k">Lead qualificado</span><span class="v">Define a etapa 3 do CRM → definir com Fer e Ramon</span></div>
+        <div class="row"><span class="k">Bloqueio no Meta</span><span class="v">Define se recupera a conta ou começa do zero → depende do acesso ao portfólio</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <p class="empty" id="empty">Nada encontrado. Tente outro termo — nomes de pessoas, produtos, plataformas ou valores.</p>
+
+  <footer>
+    Ficha de consulta rápida montada a partir da reunião “Estratégia de Tráfego para Protocolos”, 01 de setembro de 2026.<br>
+    Steink Performance · Geovane Antonio · documento interno. Atalho: <b>/</b> foca a busca, <b>Esc</b> limpa.
+  </footer>
+</div>
+
+<script>
+(function () {
+  var q = document.getElementById("q");
+  var grid = document.getElementById("grid");
+  var empty = document.getElementById("empty");
+  var count = document.getElementById("count");
+  var cards = Array.prototype.slice.call(grid.querySelectorAll(".card"));
+
+  // cada card guarda suas linhas filtráveis
+  var index = cards.map(function (card) {
+    var heading = card.querySelector("h2").textContent.toLowerCase();
+    var items = Array.prototype.slice.call(card.querySelectorAll(".row, ol.flow li, ul.bare li"));
+    return {
+      card: card,
+      heading: heading,
+      items: items.map(function (el) {
+        return { el: el, text: (el.textContent || "").toLowerCase() };
+      })
+    };
+  });
+
+  var totalItems = index.reduce(function (n, c) { return n + c.items.length; }, 0);
+
+  function render(term) {
+    var t = term.trim().toLowerCase();
+    var shownCards = 0;
+    var shownItems = 0;
+
+    index.forEach(function (c) {
+      if (!t) {
+        c.items.forEach(function (i) { i.el.hidden = false; });
+        c.card.hidden = false;
+        shownCards++;
+        shownItems += c.items.length;
+        return;
+      }
+
+      var headingHit = c.heading.indexOf(t) !== -1;
+      var hits = 0;
+
+      c.items.forEach(function (i) {
+        var hit = headingHit || i.text.indexOf(t) !== -1;
+        i.el.hidden = !hit;
+        if (hit) hits++;
+      });
+
+      c.card.hidden = hits === 0;
+      if (hits > 0) { shownCards++; shownItems += hits; }
+    });
+
+    empty.classList.toggle("on", shownCards === 0);
+    count.textContent = t ? shownItems + " de " + totalItems : "";
+  }
+
+  q.addEventListener("input", function () { render(q.value); });
+
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { q.value = ""; render(""); q.blur(); }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "/" && document.activeElement !== q) {
+      e.preventDefault();
+      q.focus();
+      q.select();
+    }
+  });
+
+  // alterna tema entre claro e escuro
+  var root = document.documentElement;
+  document.getElementById("theme").addEventListener("click", function () {
+    var current = root.getAttribute("data-theme");
+    if (!current) {
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      current = prefersDark ? "dark" : "light";
+    }
+    root.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+  });
+
+  render("");
+})();
+</script>
+</body>
+</html>
