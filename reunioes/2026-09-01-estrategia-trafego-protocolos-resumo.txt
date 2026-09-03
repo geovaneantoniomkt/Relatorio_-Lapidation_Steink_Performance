@@ -1,0 +1,108 @@
+Estratégia de Tráfego para Protocolos
+ter., 1 de set. de 2026
+
+Resumo:
+
+A reunião definiu a estratégia inicial de aquisição de leads para os protocolos premium da Lapidation Clinic.
+• Meta: R$ 1.200; Google: R$ 800
+• Meta priorizará leads para protocolos
+• Landing page específica será avaliada
+• Meta enfrenta possíveis restrições e problemas de vinculação
+• Público inicial inclui mulheres acima de 40 anos
+• Testes regionais priorizarão Sudeste e capitais do Sul
+• CRM terá etapas comerciais estruturadas
+• Cartão corporativo foi recomendado para pagamentos
+
+
+Tarefas:
+
+* Geovane Antonio: Verificar as configurações do perfil Lapidation Clinic e identificar a restrição relacionada ao BotConversa e ao portfólio
+* Geovane Antonio: Avaliar com o suporte da Meta e do Google a reversão das restrições das contas
+* Geovane Antonio: Criar uma nova conta de anúncios caso as restrições atuais não possam ser revertidas
+* Lapidation Clinic: Conversar com Ramon para definir qual perfil ficará sob responsabilidade de Geovane Antonio
+* Geovane Antonio: Estruturar a operação de tráfego do novo perfil usando uma conta de anúncios separada
+* Geovane Antonio: Alinhar com o gestor do outro perfil as campanhas que deverão ser realizadas em colaboração
+* Lapidation Clinic: Estudar a integração do site e do CRM utilizando a base de códigos disponível.
+* Geovane Antonio: Estruturar uma landing page personalizada para a venda dos protocolos.
+* Geovane Antonio: Confirmar quais influenciadores permanecerão na estratégia comercial e compartilhar essa informação.
+* Geovane Antonio: Desenhar o fluxo do CRM com as etapas de entrada, atendimento, qualificação, avaliação, proposta e encerramento.
+* Lapidation Clinic: Confirmar se Leandro já criou a página do Facebook associada ao novo Instagram.
+* Geovane Antonio: Investigar a restrição do portfólio e tentar vincular as contas do Instagram e do Facebook.
+* Lapidation Clinic: Conceder acesso completo ao portfólio do Meta para Geovane.
+* Geovane Antonio: Criar a conta do Google Ads por meio do MCC e repassar o acesso como proprietário.
+* Lapidation Clinic: Enviar os documentos necessários para a verificação do anunciante quando solicitados pelo Google.
+* Lapidation Clinic: Conversar com Ramon sobre a utilização de um cartão corporativo para o pagamento das campanhas.
+* Lapidation Clinic: Compartilhar o documento com os termos e as linguagens que não podem ser usados nos anúncios.
+* Geovane Antonio: Criar o grupo no Axe após a aprovação final para acompanhar campanhas e leads.
+* Geovane Antonio: Disponibilizar um dashboard automático de acompanhamento em aproximadamente 30 a 45 dias.
+
+
+Principais Pontos de Discussão:
+
+Objetivo e estrutura da reunião
+Geovane e Lidiane alinharam a apresentação e definiram que a conversa teria como foco entender a empresa, a marca, os produtos e as necessidades da Lapidation. Geovane explicou que faria perguntas para obter informações iniciais antes de avançar com a estratégia.
+
+Objetivos de tráfego e perfis da marca
+A Lapidation explicou que busca captar leads por meio de tráfego pago e apresentou os perfis Lapidation Wellness e Lapidation Clinic. O Wellness tem maior audiência e linguagem mais voltada a lifestyle, enquanto o Clinic possui posicionamento mais formal e clínico.
+
+Origem da audiência e transição de marca
+Foi esclarecido que o perfil Wellness veio de um antigo negócio do Ramon, o Núcleo Casa, e passou por uma transição para a Lapidation. A empresa reconheceu que o perfil estava pouco ativo e havia perdido desempenho, mas atribuiu a queda principalmente à baixa frequência de publicações.
+
+Uso combinado dos perfis
+Geovane recomendou que os dois perfis possam ser utilizados conjuntamente, com um deles concentrando a estratégia de tráfego e o outro funcionando como apoio. Ele também sugeriu campanhas em colaboração entre os perfis e possíveis influenciadores.
+
+Restrições técnicas e políticas de anúncios
+A Lapidation relatou dificuldades para vincular o BotConversa ao perfil Clinic e informou que o portfólio parecia bloqueado. Geovane explicou que anúncios relacionados a emagrecimento podem sofrer restrições na Meta e no Google e indicou que verificaria as configurações, o suporte e a possibilidade de criar uma nova conta.
+
+Definição do perfil e separação da operação
+Os participantes discutiram que Geovane provavelmente assumirá apenas um dos perfis, pois o outro já conta com um gestor de tráfego. Ficou alinhado que contas de anúncio separadas evitam conflitos e permitem que os gestores mantenham uma colaboração em campanhas que envolvam os dois perfis.
+
+Possível início de uma nova operação
+A alternativa considerada foi manter o gestor atual no perfil que ele já administra e iniciar uma nova operação no outro perfil. Geovane afirmou que poderia estruturar essa nova operação desde o início e coordenar campanhas conjuntas com o outro gestor.
+
+Metas e Produtos Principais
+Geovane Antonio investigou a meta comercial, o ticket médio e o portfólio da Lapidation Clinic. A empresa informou que pretende vender 10 planos por dia, com ticket médio aproximado de R$ 250, mas destacou que os protocolos são o foco principal por incluírem acompanhamento e benefícios adicionais.
+
+Avaliação e Captação de Leads
+A avaliação do Mapa da Saúde foi apresentada como uma ferramenta gratuita de triagem para pessoas que ainda não desejam comprar um protocolo. Após responder às perguntas e receber indicações de suplementos, o usuário é encaminhado ao WhatsApp para uma tentativa de conversão comercial; a gratuidade foi indicada como válida até setembro.
+
+Histórico Comercial e Integração com CRM
+A empresa ainda não realizou um lançamento formal e, por isso, não dispõe de dados consolidados sobre produtos mais vendidos ou volume médio de vendas. Também foram discutidas as limitações do site desenvolvido no Figma e a necessidade de estudar a integração com o CRM.
+
+Landing Page e Automação Comercial
+Geovane Antonio sugeriu criar uma landing page específica para os protocolos, separada do site institucional voltado aos produtos. A página poderia incluir formulações, benefícios, certificações e depoimentos de influenciadores, enquanto a automação atual apresenta a avaliação e os preços antes de encaminhar o lead ao comercial.
+
+Público, Protocolos e Recompra
+Foi discutida a possibilidade de utilizar ferramentas de CRM com inteligência treinável a partir das conversas dos vendedores, caso o volume de vendas aumente. A empresa informou que atende homens e mulheres, com expectativa inicial de maior concentração entre mulheres acima de 40 anos, e explicou a composição dos protocolos AM, MD e PM, que duram um mês.
+
+Posicionamento e Abrangência Geográfica
+O posicionamento da Lapidation Clinic é premium e contempla emagrecimento, definição, longevidade, saúde e qualidade de vida. A operação é totalmente online, atende nacionalmente e deverá priorizar inicialmente São Paulo, Rio de Janeiro, Goiânia e capitais do Sul para controlar o impacto do frete.
+
+Atendimento e Funil de CRM
+Fer é atualmente responsável pelo atendimento e pelas vendas, com apoio da nutricionista na etapa de avaliação. O fluxo proposto para o CRM inclui novos leads, atendimento, qualificação, agendamento e realização da avaliação, envio de proposta e classificação final como ganho ou perdido.
+
+Criativos e materiais de campanha
+Geovane verificou quem produz vídeos, fotos e artes para avaliar o aproveitamento desses materiais nas campanhas do Meta e do Google. A clínica confirmou que parte dos conteúdos é produzida internamente e que as artes estão atualmente mais concentradas com Ramon, incluindo materiais publicados no Instagram.
+
+Acessos e rastreamento do site
+Foram detalhados os acessos necessários ao site para criar uma página de captura e instalar Google Tag Manager, pixel e códigos de rastreamento. Também foram discutidas as contas de anúncio e a necessidade de criar estruturas novas para o Instagram, Facebook e Google Ads.
+
+Restrição e vinculação do Meta
+A clínica explicou que o Instagram menor está bloqueado ou restrito e que o portfólio do Meta não conseguiu ser vinculado às páginas do Facebook de Ramon ou da clínica. Geovane solicitou acesso completo ao portfólio para investigar a restrição e tentar sincronizar as contas.
+
+Investimento e criação do Google Ads
+O orçamento de mídia foi alinhado em R$ 2.000, dividido entre Meta e Google. Geovane informou que criará a conta do Google Ads dentro de seu MCC e concederá acesso à clínica, que poderá precisar fornecer documentos para a verificação do anunciante.
+
+Pagamento e risco de bloqueio
+A equipe discutiu métodos de pagamento e o risco de bloqueios associados ao nicho de atuação. Geovane explicou que bloqueios de conta podem atrasar a devolução de créditos por 30 a 60 dias e recomendou o uso de cartão corporativo; a clínica ficou de tratar do assunto com Ramon.
+
+Regras de comunicação e início do projeto
+Geovane pediu informações sobre produtos, serviços e termos que não devem ser utilizados nos anúncios, e a clínica mencionou que possui um documento com essas orientações. O início do projeto dependerá da aprovação final, seguida pela criação de um grupo no Axe para acompanhamento das campanhas e dos leads.
+
+Monitoramento e encerramento
+Foi prevista a criação de um dashboard automático em cerca de 30 a 45 dias. Também foram mencionados relatórios quinzenais ou mensais para avaliar resultados, discutir a qualidade dos leads e planejar melhorias nas campanhas.
+
+
+Bloco de Notas:
+
+* Sem anotações
