@@ -7,6 +7,7 @@ Repositório de gestão da conta **Lapidation Clinic** (Steink Performance / Geo
 | Arquivo | O que é |
 |---|---|
 | [`BRIEFING-LAPIDATION.md`](BRIEFING-LAPIDATION.md) | Briefing consolidado do cliente — empresa, produtos, público, funil, acessos, restrições, verba e pendências. Extraído da reunião de kickoff. |
+| [`briefing-lapidation.html`](briefing-lapidation.html) | Mesmo briefing em versão navegável (índice lateral, filtro de pendências por responsável). Abrir no navegador. |
 | `reunioes/` | Registros brutos das reuniões (resumo + transcrição), para consulta e rastreabilidade. |
 
 ## Status do projeto
