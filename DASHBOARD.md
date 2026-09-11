@@ -35,7 +35,7 @@ Em **Settings → Secrets and variables → Actions**:
 
 | Tipo | Nome | Valor |
 |---|---|---|
-| Secret | `META_ACCESS_TOKEN` | Token de usuário do sistema (System User) do Business "Lapidation Clinic" — ver §4 |
+| Secret | `META_ADS_TOKEN` (ou `META_ACCESS_TOKEN`) | Token de usuário do sistema (System User) do Business "Lapidation Clinic" — ver §4 |
 | Secret | `CLOUDFLARE_API_TOKEN` | Token da API do Cloudflare com permissão **Cloudflare Pages: Edit** (ver §2) |
 | Secret | `CLOUDFLARE_ACCOUNT_ID` | ID da conta Cloudflare (aparece na barra lateral do painel) |
 | Variable (opcional) | `CF_PAGES_PROJECT` | Nome do projeto Pages (padrão `lapidation-dashboard`) |

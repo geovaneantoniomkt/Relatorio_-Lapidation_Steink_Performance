@@ -36,7 +36,7 @@ jobs:
 
       - name: Coletar dados do Meta (Ads + orgânico)
         env:
-          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ADS_TOKEN || secrets.META_ACCESS_TOKEN }}
           META_AD_ACCOUNT_ID: ${{ vars.META_AD_ACCOUNT_ID || '1505849358224649' }}
           META_PAGE_ID: ${{ vars.META_PAGE_ID || '1352598281263785' }}
           META_IG_USER_ID: ${{ vars.META_IG_USER_ID || '17841427850880700' }}
