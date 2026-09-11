@@ -1,0 +1,22 @@
+{
+  "client": {
+    "name": "Lapidation Clinic",
+    "segment": "Protocolos de emagrecimento · 100% online",
+    "market": "Nacional · foco Sul e Sudeste (capitais)",
+    "agency": "Steink Performance"
+  },
+  "budget": {
+    "meta_monthly": 1200,
+    "google_monthly": 800
+  },
+  "targets": {
+    "cost_per_conversation": 15,
+    "cost_per_profile_visit": 1.5,
+    "cpm_topo_max": 5,
+    "ctr_min": 1.0,
+    "frequency_max": 2.5,
+    "min_spend_for_alert": 30
+  },
+  "instagram": { "username": "lapidation.clinic" },
+  "google_ads": { "enabled": false, "note": "Conta ainda não criada — será aberta via MCC quando o cliente aprovar a verba de R$ 800/mês." }
+}

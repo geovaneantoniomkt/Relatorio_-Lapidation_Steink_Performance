@@ -1,0 +1,14 @@
+{
+  "name": "lapidation-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dashboard de performance Lapidation Clinic — Steink Performance",
+  "scripts": {
+    "fetch": "python scripts/fetch_meta.py",
+    "dev": "wrangler pages dev public --compatibility-date=2026-09-01 --port 8788",
+    "deploy": "wrangler pages deploy public --project-name lapidation-dashboard --branch main --commit-dirty=true"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
