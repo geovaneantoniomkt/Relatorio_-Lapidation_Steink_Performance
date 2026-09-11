@@ -12,7 +12,7 @@ function h(tag, attrs = {}, ...children) {
     if (v == null || v === false) continue;
     if (k === "class") el.className = v;
     else if (k === "text") el.textContent = v;
-    else if (k === "html") el.innerHTML = v; // usado só com strings estáticas
+    else if (k === "href" || k === "src") { if (/^https?:\/\//i.test(String(v))) el.setAttribute(k, v); }
     else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
     else if (k === "hidden") el.hidden = !!v;
     else el.setAttribute(k, v);

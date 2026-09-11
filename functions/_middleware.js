@@ -161,7 +161,7 @@ function redirect(location, extraHeaders = {}) {
 
 function safeNext(raw) {
   // só aceita caminhos relativos do próprio site (evita open redirect)
-  if (typeof raw !== "string" || !raw.startsWith("/") || raw.startsWith("//") || raw.includes("\\")) return "/";
+  if (typeof raw !== "string" || !raw.startsWith("/") || raw.startsWith("//") || raw.includes("\\") || /[\x00-\x20\x7f]/.test(raw)) return "/";
   if (raw.startsWith("/login") || raw.startsWith("/logout")) return "/";
   return raw.slice(0, 300);
 }
